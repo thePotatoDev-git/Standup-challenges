@@ -69,6 +69,7 @@ function removeBeforeC(str) {
 // https://blog.barbaralaw.me/huntober-2022-day-3
 
 function replaceKey(str) {
+  str = hiddenMessage(str);
   str = str.replaceAll('S', ' ');
   str = str.replaceAll('p', ' ');
   str = str.replaceAll('a', ' ');
@@ -81,6 +82,7 @@ function replaceKey(str) {
 // https://blog.barbaralaw.me/huntober-2022-day-4
 
 function reverseString(str) {
+  str = replaceKey(str);
   return str.split('').reverse().join('');
 }
 
@@ -168,9 +170,10 @@ function finalPunSubmissions(str) {
 // Day 6 challenge
 // https://blog.barbaralaw.me/huntober-2022-day-6
 
-function removeXthChar(str, x) {
+function removeXthChar(str) {
+  str = reverseString(str);
   str = str.split('');
-  for (let i = (x-1); i < str.length; i += (x-1)) {
+  for (let i = (3-1); i < str.length; i += (3-1)) {
     str.splice(i, 1)
   }
   return str.join('')
@@ -182,6 +185,7 @@ function removeXthChar(str, x) {
 function abcSwap(str) {
   // Make an abc and reverseAbc variable with the alphabet and reversed alphabet
   // Make a loop look for a match of each element with the same value in abc
+  str = removeXthChar(str)
 
   const abc = 'abcdefghijklmnopqrstuvwxyz'
   const capAbc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
