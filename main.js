@@ -164,3 +164,40 @@ function finalPunSubmissions(str) {
   const noCapitalS = twoOrMoreCaps.filter(pun => !pun.includes('S'));
   return noCapitalS;
 }
+
+// Day 6 challenge
+// https://blog.barbaralaw.me/huntober-2022-day-6
+
+function removeXthChar(str, x) {
+  str = str.split('');
+  for (let i = (x-1); i < str.length; i += (x-1)) {
+    str.splice(i, 1)
+  }
+  return str.join('')
+}
+
+// Day 7 challenge
+// https://blog.barbaralaw.me/huntober-2022-day-7
+
+function abcSwap(str) {
+  // Make an abc and reverseAbc variable with the alphabet and reversed alphabet
+  // Make a loop look for a match of each element with the same value in abc
+
+  const abc = 'abcdefghijklmnopqrstuvwxyz'
+  const capAbc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const reverseAbc = 'zyxwvutsrqponmlkjihgfedcba'
+  let message = ''
+
+  for (let i = 0; i < str.length; i++) {
+    const abcIndex = abc.indexOf(str[i]);
+    const capAbcIndex = capAbc.indexOf(str[i]);
+    if (str[i] === abc[abcIndex]) {
+      message += reverseAbc[abcIndex].toUpperCase()
+    } else if (str[i] === capAbc[capAbcIndex]) {
+      message += reverseAbc[capAbcIndex]
+    } else {
+      message += str[i]
+    }
+  }
+  return message;
+}
