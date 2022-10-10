@@ -42,3 +42,28 @@ function moveRight(arr, value) {
     });
     return arr;
 }
+
+// Day 3
+// https://blog.barbaralaw.me/huntober-2022-day-10
+
+function aToFront3ToBack (arr) {
+    // Filter out arr with elements that have 'a'
+    // Filter out arr with elements that have more than 3 letters
+    // Concat the above variables
+
+    const hasA = [];
+    const over3 = [];
+    const everythingElse = [];
+
+    arr.forEach((el, i) => {
+        if (el.includes('a')) {
+            hasA.push(el);
+        } else if (el.length > 3) {
+            over3.push(el);
+        } else {
+            everythingElse.push(el);
+        }
+    });
+
+    return [...hasA, ...everythingElse, ...over3];
+}
