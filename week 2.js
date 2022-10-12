@@ -67,3 +67,50 @@ function aToFront3ToBack (arr) {
 
     return [...hasA, ...everythingElse, ...over3];
 }
+
+// Day 4
+// https://blog.barbaralaw.me/huntober-2022-day-11
+
+function moveUp(arr, value) {
+    const [a, b, c] = arr;
+    
+    b.forEach((el, i) => {
+        if (el === value) {
+            const bSplice = b.splice(i, 1);
+            const aSplice = a.splice(i, 1);
+            a.splice(i, 0, bSplice[0]);
+            b.splice(i, 0, aSplice[0]);
+        }
+    });
+    c.forEach((el, i) => {
+        if (el === value) {
+            const cSplice = c.splice(i, 1);
+            const bSplice = b.splice(i, 1);
+            b.splice(i, 0, cSplice[0]);
+            c.splice(i, 0, bSplice[0]);
+        }
+    });
+    return arr;
+}
+
+function moveDown(arr, value) {
+    const [a, b, c] = arr;
+    
+    b.forEach((el, i) => {
+        if (el === value) {
+            const bValue = b.splice(i, 1);
+            const cValue = c.splice(i, 1);
+            b.splice(i, 0, cValue[0]);
+            c.splice(i, 0, bValue[0]);
+        }
+    });
+    a.forEach((el, i) => {
+        if (el === value) {
+            const aValue = a.splice(i, 1);
+            const bValue = b.splice(i, 1);
+            a.splice(i, 0, bValue[0]);
+            b.splice(i, 0, aValue[0]);
+        }
+    });
+    return arr;
+}
