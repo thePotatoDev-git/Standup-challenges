@@ -76,18 +76,18 @@ function moveUp(arr, value) {
     
     b.forEach((el, i) => {
         if (el === value) {
-            const bSplice = b.splice(i, 1);
-            const aSplice = a.splice(i, 1);
-            a.splice(i, 0, bSplice[0]);
-            b.splice(i, 0, aSplice[0]);
+            const bSplice = b[i];
+            const aSplice = a[i];
+            a.splice(i, 1, bSplice);
+            b.splice(i, 1, aSplice);
         }
     });
     c.forEach((el, i) => {
         if (el === value) {
-            const cSplice = c.splice(i, 1);
-            const bSplice = b.splice(i, 1);
-            b.splice(i, 0, cSplice[0]);
-            c.splice(i, 0, bSplice[0]);
+            const cSplice = c[i];
+            const bSplice = b[i];
+            b.splice(i, 1, cSplice);
+            c.splice(i, 1, bSplice);
         }
     });
     return arr;
@@ -98,18 +98,18 @@ function moveDown(arr, value) {
     
     b.forEach((el, i) => {
         if (el === value) {
-            const bValue = b.splice(i, 1);
-            const cValue = c.splice(i, 1);
-            b.splice(i, 0, cValue[0]);
-            c.splice(i, 0, bValue[0]);
+            const bValue = b[i];
+            const cValue = c[i];
+            b.splice(i, 1, cValue);
+            c.splice(i, 1, bValue);
         }
     });
     a.forEach((el, i) => {
         if (el === value) {
-            const aValue = a.splice(i, 1);
-            const bValue = b.splice(i, 1);
-            a.splice(i, 0, bValue[0]);
-            b.splice(i, 0, aValue[0]);
+            const aValue = a[i];
+            const bValue = b[i];
+            a.splice(i, 1, bValue);
+            b.splice(i, 1, aValue);
         }
     });
     return arr;
