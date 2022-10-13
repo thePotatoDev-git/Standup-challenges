@@ -114,3 +114,25 @@ function moveDown(arr, value) {
     });
     return arr;
 }
+
+// Day 5
+// https://blog.barbaralaw.me/huntober-2022-day-12
+
+function randomizer(arr) {
+    // Create empty arrays for all values "allValues" and the final randomized result "randomized"
+    // Use the spread operator to push all values into allValues
+    // Randomize the elements in allValues
+    // Put the number of values matching the same number length of an array in the original arr and push them into the "randomized" array
+    // Return the final result
+
+    const allValues = [];
+    const randomized = [];
+    arr.forEach(el => allValues.push(...el))
+    allValues.sort(() => Math.random() - 0.5)
+    
+    while (allValues.length > 0) {
+        const splitUp = allValues.splice(0, arr[0].length)
+        randomized.push(splitUp);
+    }
+    return randomized;
+}
