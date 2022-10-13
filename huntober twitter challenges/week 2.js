@@ -127,6 +127,7 @@ function randomizer(arr) {
 
     const allValues = [];
     const randomized = [];
+
     arr.forEach(el => allValues.push(...el))
     allValues.sort(() => Math.random() - 0.5)
     
@@ -134,5 +135,6 @@ function randomizer(arr) {
         const splitUp = allValues.splice(0, arr[0].length)
         randomized.push(splitUp);
     }
+    
     return randomized;
 }
