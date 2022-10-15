@@ -118,7 +118,7 @@ function moveDown(arr, value) {
 // Day 5
 // https://blog.barbaralaw.me/huntober-2022-day-12
 
-function randomizer(arr) {
+function shuffleGrid(arr) {
     // Create empty arrays for all values "allValues" and the final randomized result "randomized"
     // Use the spread operator to push all values into allValues
     // Randomize the elements in allValues
@@ -126,15 +126,20 @@ function randomizer(arr) {
     // Return the final result
 
     const allValues = [];
-    const randomized = [];
+    const tempGrid = [];
 
     arr.forEach(el => allValues.push(...el))
     allValues.sort(() => Math.random() - 0.5)
     
     while (allValues.length > 0) {
         const splitUp = allValues.splice(0, arr[0].length)
-        randomized.push(splitUp);
+        tempGrid.push(splitUp);
     }
     
-    return randomized;
+    return tempGrid;
 }
+
+// Day 6
+// https://blog.barbaralaw.me/huntober-2022-day-13
+
+// https://codepen.io/thePotatoDev/pen/rNvRwwN
