@@ -18,28 +18,26 @@ function moveLeft(arr, value) {
     // Take the value and find its matching element in arr
     // Splice that element and move it one space to the left
 
-    arr.forEach((el, i) => {
+    for (let i = 0; i < arr.length; i++) {
         if (value === arr[0]) {
             return arr;
-        }
-        if (el === value) {
+        } else if (arr[i] === value) {
             arr.splice(i, 1);
-            arr.splice(i-1, 0, el)
+            arr.splice(i-1, 0, value);
         }
-    });
+    }
     return arr;
 }
 
 function moveRight(arr, value) {
-    arr.forEach((el, i) => {
+    for (let i = arr.length - 1; i >= 0; i--) {
         if (value === arr[arr.length - 1]) {
             return arr;
-        }
-        if (el === value) {
+        } else if (value === arr[i]) {
             arr.splice(i, 1);
-            arr.splice(i+1, 0, el);
+            arr.splice(i+1, 0, value)
         }
-    });
+    }
     return arr;
 }
 
