@@ -40,3 +40,19 @@ function domainName(url){
 
     return url[0];
 }
+
+// 10/18/22
+// Given an array of integers as strings and numbers, return the sum of the array values as if all were numbers.
+
+// Return your answer as a number.
+
+// assert.strictEqual(sumMix([9, 3, '7', '3']), 22);
+// assert.strictEqual(sumMix(['5', '0', 9, 3, 2, 1, '9', 6, 7]), 42); 
+// assert.strictEqual(sumMix(['3', 6, 6, 0, '5', 8, 5, '6', 2,'0']), 41); 
+
+// Iterate through all numbers and convert them to a number
+// Get the sum of all the numbers
+
+function sumMix(arr) {
+    return arr.reduce((total, num) => total += Number(num), 0);
+}
