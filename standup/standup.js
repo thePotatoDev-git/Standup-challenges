@@ -104,3 +104,21 @@ function repeats (arr) {
     
     return arr.filter(num => !repeated.includes(num)).reduce((total, num) => total += num, 0);
 }
+
+// 10/21/22
+// Given an array of digital numbers, return a new array of length number containing the last even numbers from the original array (in the same order). The original array will be not empty and will contain at least "number" even numbers.
+
+// For example:
+
+// ([1, 2, 3, 4, 5, 6, 7, 8, 9], 3) => [4, 6, 8]
+// ([-22, 5, 3, 11, 26, -6, -7, -8, -9, -8, 26], 2) => [-8, 26]
+// ([6, -25, 3, 7, 5, 5, 7, -3, 23], 1) => [6]
+
+function evenEndNums(arr, n) {
+    // Filter out all odd numbers in the array
+    // Grab the last n numbers from the even nums array
+
+    const evenNums = arr.filter(num => num % 2 === 0); 
+
+    return evenNums.slice(-n);
+}
