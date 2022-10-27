@@ -186,11 +186,10 @@ function duplicateEncode(str){
     // If an element shares the same index, turn it into a '('
     // If an element doesn't have the same index and lastIndex, turn it into a ')'
     // Return the joined array
-    str = str.toLowerCase();
     const splitWord = str.toLowerCase().split('');
     
     const encoded = splitWord.map(char => {
-      if (str.indexOf(char) === word.lastIndexOf(char)) {
+      if (splitWord.indexOf(char) === splitWord.lastIndexOf(char)) {
         return '(';
       } else {
         return ')';
