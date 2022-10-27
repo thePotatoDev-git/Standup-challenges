@@ -188,13 +188,23 @@ function duplicateEncode(str){
     // Return the joined array
     const splitWord = str.toLowerCase().split('');
     
-    const encoded = splitWord.map(char => {
-      if (splitWord.indexOf(char) === splitWord.lastIndexOf(char)) {
-        return '(';
-      } else {
-        return ')';
-      }
-    })
+    // const encoded = splitWord.map(char => {
+    //   if (splitWord.indexOf(char) === splitWord.lastIndexOf(char)) {
+    //     return '(';
+    //   } else {
+    //     return ')';
+    //   }
+    // })
     
-    return encoded.join('');
-  }
+    // return encoded.join('');
+
+    let counts = {};
+
+    for (el of splitWord) {
+        counts[el] = counts[el] ? counts[el] + 1 : 1
+    }
+
+    return splitWord.map(char => {
+        return counts[char] > 1 ? ')' : '(';
+    }).join('');
+}
