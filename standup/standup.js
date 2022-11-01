@@ -208,3 +208,36 @@ function duplicateEncode(str){
         return counts[char] > 1 ? ')' : '(';
     }).join('');
 }
+
+// 11/1/2022
+// Given a string, return a new string that has transformed based on the input:
+
+// Change case of every character, ie. lower case to upper case, upper case to lower case.
+// Reverse the order of words from the input.
+// Note: You will have to handle multiple spaces, and leading/trailing spaces.
+
+// For example:
+
+// "Example Input" ==> "iNPUT eXAMPLE"
+// You may assume the input only contain English alphabet and spaces.
+
+function strTransform(str) {
+    // Only a string. No numbers, booleans, or any other funny business
+    // Returns just a single string with cases opposite from the original. The result will have words reversed, not the whole string and characters reversed.
+
+    // Split str into individual chars
+    // Iterate through each string and check their cases
+    // If it is lowerCase, change to upperCase and vice versa
+    // Join the array
+    // Split it again by spaces, then reverse, and join by spaces 
+
+    str = str.split('');
+
+    const oppositeCase = str.map(letter => letter === letter.toLowerCase() ? letter.toUpperCase() : letter.toLowerCase()).join('');
+
+    return oppositeCase.split(' ').reverse().join(' ');
+}
+
+console.log(strTransform('Input Example')) // eXAMPLE iNPUT
+console.log(strTransform('GOOD MORNING')) // 'morning good'
+console.log(strTransform('WhAtS gOiNg On!!!')) // oN!!! GoInG wHaTs
