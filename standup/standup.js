@@ -241,3 +241,22 @@ function strTransform(str) {
 console.log(strTransform('Input Example')) // eXAMPLE iNPUT
 console.log(strTransform('GOOD MORNING')) // 'morning good'
 console.log(strTransform('WhAtS gOiNg On!!!')) // oN!!! GoInG wHaTs
+
+// 11/2/2022
+// Given a string of words (x), you need to return an array of the words, sorted alphabetically by the final character in each.
+
+// If two words have the same last letter, they returned array should show them in the order they appeared in the given string.
+
+// All inputs will be valid.
+
+// last('man i need a taxi up to ubud'), ['a', 'need', 'ubud', 'i', 'taxi', 'man', 'to', 'up']
+// last('what time are we climbing up the volcano'), ['time', 'are', 'we', 'the', 'climbing', 'volcano', 'up', 'what']
+// last('take me to semynak'), ['take', 'me', 'semynak', 'to'] 
+
+function lastCharSort(str) {
+    // Split str into an array of words
+    // Grab the last letter of each word and sort by those letters
+
+    str = str.split(' ');
+    return str.sort((a, b) => a[a.length - 1] < b[b.length - 1] ? -1 : 1)
+}
