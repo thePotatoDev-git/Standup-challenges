@@ -260,3 +260,41 @@ function lastCharSort(str) {
     str = str.split(' ');
     return str.sort((a, b) => a[a.length - 1] < b[b.length - 1] ? -1 : 1)
 }
+
+// 11/7/22
+// An ordered sequence of numbers from 1 to N is given. One number might have deleted from it, then the remaining numbers were mixed. Find the number that was deleted.
+
+// Example:
+
+// The starting array sequence is [1,2,3,4,5,6,7,8,9]
+// The mixed array with one deleted number is [3,2,4,6,7,8,1,9]
+// Your function should return the int 5.
+// If no number was deleted from the array and no difference with it, your function should return the int 0.
+
+// Note: N may be 1 or less (in the latter case, the first array will be []).
+
+// findDeletedNumber([1,2,3,4,5], [3,4,1,5]), 2, 'Deletion')
+// findDeletedNumber([1,2,3,4,5,6,7,8,9], [1,9,7,4,6,2,3,8]), 5, 'Deletion')
+// findDeletedNumber([1,2,3,4,5,6,7,8,9], [5,7,6,9,4,8,1,2,3]), 0, 'No deletion')
+
+function findDeletedNum(arr, mixedArr) {
+    // If arr.length and mixedArr.length are the same, then return 0
+    // Sort the mixedArr in ascending order
+    // Make a for loop to compare arr[i] with mixedArr[i]
+    // If they are no equal, return the value of arr[i]
+
+    if (arr.length === mixedArr.length) {
+        return 0;
+    }
+
+    const mixedArrSorted = mixedArr.sort((a, b) => a - b);
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== mixedArrSorted[i]) {
+            return arr[i];
+        }
+    }
+
+    console.log(findDeletedNum([1, 2, 3, 4, 5], [3, 1, 4, 5]), 2);
+    console.log(findDeletedNum([3, 4, 5, 6, 7, 8], [5, 4, 6, 3, 8]), 7);
+    console.log(findDeletedNum([20, 21, 22, 23, 24, 25], [25, 20, 24, 23, 22]), 21);
+}
