@@ -294,7 +294,34 @@ function findDeletedNum(arr, mixedArr) {
         }
     }
 
-    console.log(findDeletedNum([1, 2, 3, 4, 5], [3, 1, 4, 5]), 2);
-    console.log(findDeletedNum([3, 4, 5, 6, 7, 8], [5, 4, 6, 3, 8]), 7);
-    console.log(findDeletedNum([20, 21, 22, 23, 24, 25], [25, 20, 24, 23, 22]), 21);
 }
+
+console.log(findDeletedNum([1, 2, 3, 4, 5], [3, 1, 4, 5]), 2);
+console.log(findDeletedNum([3, 4, 5, 6, 7, 8], [5, 4, 6, 3, 8]), 7);
+console.log(findDeletedNum([20, 21, 22, 23, 24, 25], [25, 20, 24, 23, 22]), 21);
+
+// 11/9/22
+// Implement a difference function, which subtracts one list from another and returns the result.
+
+// It should remove all values from list a, which are present in list b keeping their order.
+
+// arrayDiff([1,2],[1]) == [2]
+// If a value is present in b, all of its occurrences must be removed from the other:
+
+// arrayDiff([1,2,2,2,3],[2]) == [1,3]
+
+// arrayDiff([], [4,5]), [], "a was [], b was [4,5]"
+
+// arrayDiff([3,4], [3]), [4], "a was [3,4], b was [3]"
+
+// arrayDiff([1,8,2], []), [1,8,2], "a was [1,8,2], b was []"
+
+function arrayDiff(a, b) {
+    // Filter a for elements not in b
+
+    return a.filter(num => !b.includes(num));
+}
+
+console.log(arrayDiff([1, 2, 2, 3, 4], [2]), [1, 3, 4]);
+console.log(arrayDiff([1, 2], [2]), [1]);
+console.log(arrayDiff([1, 3, 6], []), [1, 3, 6]);
