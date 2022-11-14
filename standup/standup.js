@@ -317,11 +317,45 @@ console.log(findDeletedNum([20, 21, 22, 23, 24, 25], [25, 20, 24, 23, 22]), 21);
 // arrayDiff([1,8,2], []), [1,8,2], "a was [1,8,2], b was []"
 
 function arrayDiff(a, b) {
+    // If a or b is empty, return the opposite array
     // Filter a for elements not in b
+    if (a.length === 0 || b.length === 0) {
+        return a;
+    } else {
+        return a.filter(num => !b.includes(num));
+    }
 
-    return a.filter(num => !b.includes(num));
 }
 
 console.log(arrayDiff([1, 2, 2, 3, 4], [2]), [1, 3, 4]);
 console.log(arrayDiff([1, 2], [2]), [1]);
 console.log(arrayDiff([1, 3, 6], []), [1, 3, 6]);
+
+// 11/14/22
+// You need to create a function that when provided with a triplet, returns the index of the numerical element that lies between the other two elements.
+
+// The input to the function will be an array of three distinct numbers.
+
+// For example:
+
+// gimme([2, 3, 1]) => 0
+// 2 is the number that fits between 1 and 3 and the index of 2 in the input array is 0.
+
+// Another example (just to make sure it is clear):
+
+// gimme([5, 10, 14]) => 1
+// 10 is the number that fits between 5 and 14 and the index of 10 in the input array is 1.
+
+function middleNum(arr) {
+    // Sort the array
+    // Grab the middle element
+    // Find the index of that element in arr
+
+    const middle = [...arr].sort((a, b) => a - b)[1]
+    
+    return arr.indexOf(middle);
+}
+
+console.log(middleNum([3, 1, 2]), 2);
+console.log(middleNum([4, 1, 20]), 0);
+console.log(middleNum([20, 15, 4]), 1);
