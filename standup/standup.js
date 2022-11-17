@@ -392,3 +392,30 @@ function sortArray(arr) {
 console.log(sortArray([7, 1]), [1, 7]);
 console.log(sortArray([5, 8, 6, 3, 4]), [3, 8, 6, 5, 4]);
 console.log(sortArray([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]), [1, 8, 3, 6, 5, 4, 7, 2, 9, 0]);
+
+// 11/17/22
+// Given an array of strings of the same letter type. Return a new array, which will differ in that the length of each element is equal to the average length of the elements of the previous array.
+
+// A few examples:
+
+// ['u', 'y'] =>  ['u', 'y'] // average length is 1
+// ['aa', 'bbb', 'cccc'] => ['aaa', 'bbb', 'ccc'] // average length is 3
+// ['aa', 'bb', 'ddd', 'eee'] => ['aaa', 'bbb', 'ddd', 'eee'] // average length is 2.5 round up to 3
+// If the average length is not an integer, use Math.round().
+// The input array's length > 1
+
+function averageLength(arr) {
+    // Map a new array with the length of each element in arr
+    // Add the lengths of all the elements, then divide by the number of elements to find the average
+    // Round that number to the nearest number
+    // Map a new array repeating the element letter by the average number
+
+    const arrLengthSum = arr.map(el => el.length).reduce((total, num) => total += num, 0);
+    const average = Math.round(arrLengthSum / arr.length);
+
+    return arr.map(el => el[0].repeat(average));
+}
+
+console.log(averageLength(['u', 'y']), "['u' 'y']");
+console.log(averageLength(['aa', 'bbb', 'cccc']), "['aaa', 'bbb', 'ccc']");
+console.log(averageLength(['aa', 'bb', 'ddd', 'eee']), "['aaa', 'bbb', 'ddd', 'eee']");
