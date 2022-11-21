@@ -419,3 +419,32 @@ function averageLength(arr) {
 console.log(averageLength(['u', 'y']), "['u' 'y']");
 console.log(averageLength(['aa', 'bbb', 'cccc']), "['aaa', 'bbb', 'ccc']");
 console.log(averageLength(['aa', 'bb', 'ddd', 'eee']), "['aaa', 'bbb', 'ddd', 'eee']");
+
+// 11/21/22
+// Your task is to remove all consecutive duplicate words from a string, leaving only first words entries. For example:
+
+// "alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"
+
+// --> "alpha beta gamma delta alpha beta gamma delta"
+
+function removeConsecutive(str) {
+    // Split str into separate elements
+    // Make a loop and compare the current element with the next element
+    // If they match, remove the current element
+    // Join the final result
+
+    const splitStr = str.split(' ');
+    const newArr = [];
+
+    for (let i = 0; i < splitStr.length; i++) {
+        if (splitStr[i] !== splitStr[i+1]) {
+            newArr.push(splitStr[i])
+        }
+    }
+
+    return newArr.join(' ');
+}
+
+console.log(removeConsecutive("alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"), "(alpha beta gamma delta alpha beta gamma delta)");
+console.log(removeConsecutive("alpha alpha alpha alpha"), "(alpha)");
+console.log(removeConsecutive("alpha alpha beta alpha gamma gamma beta delta"), "(alpha beta alpha gamma beta delta)");
