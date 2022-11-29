@@ -434,17 +434,43 @@ function removeConsecutive(str) {
     // Join the final result
 
     const splitStr = str.split(' ');
-    const newArr = [];
+    // const newArr = [];
 
-    for (let i = 0; i < splitStr.length; i++) {
-        if (splitStr[i] !== splitStr[i+1]) {
-            newArr.push(splitStr[i])
-        }
-    }
+    // for (let i = 0; i < splitStr.length; i++) {
+    //     if (splitStr[i] !== splitStr[i+1]) {
+    //         newArr.push(splitStr[i])
+    //     }
+    // }
+    
+    // return newArr.join(' ');
 
-    return newArr.join(' ');
+    
 }
 
 console.log(removeConsecutive("alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"), "(alpha beta gamma delta alpha beta gamma delta)");
 console.log(removeConsecutive("alpha alpha alpha alpha"), "(alpha)");
 console.log(removeConsecutive("alpha alpha beta alpha gamma gamma beta delta"), "(alpha beta alpha gamma beta delta)");
+
+// 11/29/22
+// You will be given an array of strings and your task is to remove all consecutive duplicate letters from each string in the array.
+
+// For example:
+
+// dup(["abracadabra","allottee","assessee"]) = ["abracadabra","alote","asese"].
+// dup(["kelless","keenness"]) = ["keles","kenes"].
+// Strings will be lowercase only, no spaces 
+
+// dup(["ccooddddddewwwaaaaarrrrsssss","piccaninny","hubbubbubboo"]),['codewars','picaniny','hubububo'])
+// dup(["abracadabra","allottee","assessee"]),['abracadabra','alote','asese'])
+// dup(["kelless","keenness"]), ['keles','kenes'])
+
+function removeConsecutiveDuplicates(arr) {
+    // Split each element into individual letters
+    // Check if the next element is the same as the current element, and remove the current one if it is
+    // Join the letters back together
+
+    return arr.map((word) => word.split('').filter((letter, index, array) => letter !== array[index + 1]).join(''));
+}
+
+console.log(removeConsecutiveDuplicates(['abracadabra', 'allottee', 'assessee'], "['abracadabra', 'alote', 'asese']"));
+console.log(removeConsecutiveDuplicates(['kelless', 'keenness'], "['keles', 'kenes']"));
