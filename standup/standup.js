@@ -531,3 +531,29 @@ function fizzBuzz(n) {
 
 console.log(fizzBuzz(3), '2: Fizz, 3: Buzz');
 console.log(fizzBuzz(12), '2: Fizz, 3: Buzz, 4: Fizz, 6: Fizz Buzz, 8: Fizz, 9: Buzz 10: Fizz, 12: Fizz Buzz');
+
+// 12/2/22
+// Given a string of characters as input, write a function that returns it with the characters reversed. No Reverse Method (well brute force it first, but then no reverse method)!
+
+function reverseStr(str) {
+    // Make a for-loop starting at the last number in str length
+    // Add each letter starting backwards to a new variable
+
+    let reversed = '';
+
+    // for (let i = str.length - 1; i >= 0; i--) {
+    //     reversed = reversed + str[i];
+    // }
+
+    // return reversed;
+
+    for (let char of str) {
+        reversed = char + reversed;
+    }
+
+    return reversed;
+}
+
+console.log(reverseStr('hello'), 'olleh');
+console.log(reverseStr('racecar'), 'racecar');
+console.log(reverseStr('december'), 'rebmeced');
