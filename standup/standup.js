@@ -496,7 +496,6 @@ function absentVowel(str){
     // If the current vowel is missing, return the index
     
     const vowels = ['a', 'e', 'i', 'o', 'u'];
-    str = str.toLowerCase();
     
     for (let i = 0; i < vowels.length; i++) {
       if (!str.includes(vowels[i])) {
@@ -507,3 +506,28 @@ function absentVowel(str){
 
 console.log(absentVowel('John Doe hs seven red pples under his bsket'), '0');
 console.log(absentVowel('Bb Smith sent us six neatly arranged range bicycles'), '3');
+
+// 12/1/22
+// Given a number as an input, print out every integer from 1 to that number. However, when the integer is divisible by 2, print out “Fizz”; when it’s divisible by 3, print out “Buzz”; when it’s divisible by both 2 and 3, print out “Fizz Buzz”.
+
+function fizzBuzz(n) {
+    // Make a loop from 1 to n
+    // If divisible by 2, console.log 'Fizz'
+    // If number is divisible by 3, console.log 'Buzz'
+    // If number is divisible by 2 and 3, console.log Fizz Buzz
+
+    for (let i = 1; i <= n; i++) {
+        if (i % 2 === 0 && i % 3 === 0) {
+            console.log('Fizz Buzz');
+        } else if (i % 2 === 0) {
+            console.log('Fizz');
+        } else if (i % 3 === 0) {
+            console.log('Buzz');
+        } else {
+            console.log(i);
+        }
+    }
+}
+
+console.log(fizzBuzz(3), '2: Fizz, 3: Buzz');
+console.log(fizzBuzz(12), '2: Fizz, 3: Buzz, 4: Fizz, 6: Fizz Buzz, 8: Fizz, 9: Buzz 10: Fizz, 12: Fizz Buzz');
