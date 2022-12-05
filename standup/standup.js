@@ -557,3 +557,23 @@ function reverseStr(str) {
 console.log(reverseStr('hello'), 'olleh');
 console.log(reverseStr('racecar'), 'racecar');
 console.log(reverseStr('december'), 'rebmeced');
+
+// 12/5/22
+// Count all the occurring characters in a string. If you have a string like aba, then the result should be {'a': 2, 'b': 1}.
+
+// What if the string is empty? Then the result should be empty object literal, {}.
+
+function charCount(str) {
+    str = str.split('');
+    counts = {};
+    
+    for (const char of str) {
+        counts[char] = counts[char] ? counts[char] + 1 : 1;
+    }
+
+    return counts;
+}
+
+console.log(charCount('aba'), "{'a': 2, 'b': 1}");
+console.log(charCount('hello'), "{'e': 1, 'h': 1, 'l': 2, 'o': 1}");
+console.log(charCount('abba'), "{'a': 2, 'b': 2}");
