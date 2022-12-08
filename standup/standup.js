@@ -605,7 +605,7 @@ const numJewelsInStones = function(jewels, stones) {
     // Find the jewels in the stoneCount object and add them together
     
     jewels = jewels.split('');
-    stones = stones.split('');
+    // stones = stones.split('');
     const stoneCount = {};
     let totalJewels = 0;
 
@@ -623,3 +623,44 @@ const numJewelsInStones = function(jewels, stones) {
 
 console.log(numJewelsInStones('aA', 'aAAbbbb'), '3');
 console.log(numJewelsInStones('z', 'ZZ'), '0');
+
+// 12/8/22
+// Given a string of characters, return the character that appears the most often.
+
+// describe("Max Character", () => {
+//  it("Should return max character", () => {
+//   assert.equal(max("Hello World!"), "l");
+//  });
+// });
+
+// No String or Array Methods (well brute force it first, but then no methods)! 
+
+function maxChar(str) {
+    // Lowercase the str
+    // Make a 'maxCount' variable with a value of 0
+    // Make an empty 'max' variable
+    // Find the number of occurrences of each character and put them in an object
+    // Loop through the object. If the value is bigger than the value in max, change 'max' to that property
+    // Return max
+    const characters = {};
+    let maxCount = 0;
+    let max = '';
+    str = str.toLowerCase();
+
+    for (const char of str) {
+        characters[char] = characters[char] ? characters[char] + 1 : 1;
+    }
+
+    for (const key in characters) {
+        if (characters[key] > maxCount) {
+            maxCount = characters[key];
+            max = key
+        }
+    }
+
+    return max;
+}
+
+console.log(maxChar('Hello World!'), 'l');
+console.log(maxChar('Wakka wokka!'), 'k');
+console.log(maxChar('Max Character'), 'a');
