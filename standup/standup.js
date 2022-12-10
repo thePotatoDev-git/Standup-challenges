@@ -604,19 +604,27 @@ const numJewelsInStones = function(jewels, stones) {
     // Find the occurrences in stones and store them in an object
     // Find the jewels in the stoneCount object and add them together
     
-    jewels = jewels.split('');
-    // stones = stones.split('');
-    const stoneCount = {};
+    const stonesAndJewels = {};
     let totalJewels = 0;
 
     
-    for (const stone of stones) {
-        stoneCount[stone] = stoneCount[stone] ? stoneCount[stone] + 1 : 1;
+    // for (const stone of stones) {
+    //     stoneCount[stone] = stoneCount[stone] ? stoneCount[stone] + 1 : 1;
+    // }
+
+    // jewels.forEach(jewel => {
+    //     stoneCount[jewel] ? totalJewels += stoneCount[jewel] : totalJewels;
+    // });
+
+    for (const jewel of jewels) {
+        stonesAndJewels[jewel] = true
     }
 
-    jewels.forEach(jewel => {
-        stoneCount[jewel] ? totalJewels += stoneCount[jewel] : totalJewels;
-    });
+    for (const stone of stones) {
+        if (stonesAndJewels[stone]) {
+            totalJewels++
+        }
+    }
 
     return totalJewels;
 };
