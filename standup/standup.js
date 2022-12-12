@@ -672,3 +672,44 @@ function maxChar(str) {
 console.log(maxChar('Hello World!'), 'l');
 console.log(maxChar('Wakka wokka!'), 'k');
 console.log(maxChar('Max Character'), 'a');
+
+// 12/12/22
+// Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+// Example 1:
+
+// Input: nums = [1,2,3,1]
+// Output: true
+// Example 2:
+
+// Input: nums = [1,2,3,4]
+// Output: false
+// Example 3:
+
+// Input: nums = [1,1,1,3,3,4,3,2,4,2]
+// Output: true
+
+function containsDuplicate(arr) {
+    // Make a counts variable with an empty object
+    // Map out duplicates in counts
+    // If any counts key has > 1 count, return true
+    // Else return false
+
+    const counts = {};
+
+    for (num of arr) {
+        counts[num] = counts[num] ? counts[num] + 1 : 1
+    }
+
+    for (const key of arr) {
+        if (counts[key] > 1) {
+            return true;
+        }
+    }
+
+    return false
+}
+
+console.log(containsDuplicate([1, 2, 3, 4]), 'false');
+console.log(containsDuplicate([1, 1, 2, 3, 3, 4, 5]), 'true');
+console.log(containsDuplicate([1, 1, 1, 1, 1]), 'true');
