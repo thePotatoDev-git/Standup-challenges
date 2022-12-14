@@ -735,20 +735,25 @@ function majorityElement(arr) {
     // Count the occurrences for each element
     // Loop through the object. If the value is bigger than 'majority', replace it with that number, and change 'element' to that number
 
+    if (arr.length === 1) {
+        return arr[0];
+    }
+
     const hashCount = {};
     let majority = 0;
-    let element = '';
+    let element = arr[0];
 
     for (num of arr) {
         hashCount[num] = hashCount[num] ? hashCount[num] + 1 : 1;
+        hashCount[num] > arr.length / 2;
     }
 
-    for (const el in hashCount) {
-        if (hashCount[el] > majority) {
-            majority = hashCount[el];
-            element = el;
-        }
-    }
+    // for (const el in hashCount) {
+    //     if (hashCount[el] > majority) {
+    //         majority = hashCount[el];
+    //         element = el;
+    //     }
+    // }
 
     return element
 }
@@ -756,3 +761,68 @@ function majorityElement(arr) {
 console.log(majorityElement([3, 2, 3]), '3');
 console.log(majorityElement([2, 2, 1, 1, 1, 2, 2,]), '2');
 console.log(majorityElement([3, 2, 1, 2, 1, 3, 3]), '3');
+console.log(majorityElement([1]), '1');
+console.log(majorityElement([1, 2, 3, 4, 5, 6, 7, 8, 1]), '1')
+
+// 12/14/22
+// Given a magazine of words and a ransom note, determine if it’s possible to “cut out” and create the ransom note from the magazine words.
+
+// const magazine =
+//  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+
+// describe("Ransom Note", () => {
+//  it("Should return true", () => {
+//   assert.equal(ransomNote("sit ad est sint", magazine), true);
+//  });
+
+// it("Should return false", () => {
+//   assert.equal(ransomNote("sit ad est love", magazine), false);
+//  });
+
+// it("Should return true", () => {
+//   assert.equal(ransomNote("sit ad est sint in in", magazine), true);
+//  });
+
+// it("Should return false", () => {
+//   assert.equal(ransomNote("sit ad est sint in in in in", magazine), false);
+//  });
+// });
+
+const magazine =
+ "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+
+function ransomNote(note, magazine) {
+    // Make a noteMap and magazineMap variable with empty objects
+    // Split both note and magazine into individual words
+    // Map the occurrences of each word into noteMap and magazineMap
+    // For each note word, see if magazineMap has equal or more occurrences than noteMap. If not, return false
+
+    note = note.split(' ');
+    magazine = magazine.split(' ');
+    const noteMap = {};
+    const magazineMap = {};
+
+    for (word of note) {
+        noteMap[word] = noteMap[word] ? noteMap[word] + 1 : 1
+    };
+
+    for (word of magazine) {
+        magazineMap[word] = magazineMap[word] ? magazineMap[word] + 1 : 1
+    };
+
+    for (const ransomWord in noteMap) {
+        if (magazineMap[ransomWord] === undefined) {
+            return false;
+        }
+        else if (noteMap[ransomWord] > magazineMap[ransomWord]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+console.log(ransomNote('sit ad est sint', magazine), 'true');
+console.log(ransomNote('sit ad est love', magazine), 'false');
+console.log(ransomNote('sit ad est sint in in', magazine), 'true');
+console.log(ransomNote('sit ad est sint in in in in', magazine), 'false');
