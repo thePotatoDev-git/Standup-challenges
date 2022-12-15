@@ -811,10 +811,7 @@ function ransomNote(note, magazine) {
     };
 
     for (const ransomWord in noteMap) {
-        if (magazineMap[ransomWord] === undefined) {
-            return false;
-        }
-        else if (noteMap[ransomWord] > magazineMap[ransomWord]) {
+        if (magazineMap[ransomWord] === undefined || noteMap[ransomWord] > magazineMap[ransomWord]) {
             return false;
         }
     }
@@ -826,3 +823,30 @@ console.log(ransomNote('sit ad est sint', magazine), 'true');
 console.log(ransomNote('sit ad est love', magazine), 'false');
 console.log(ransomNote('sit ad est sint in in', magazine), 'true');
 console.log(ransomNote('sit ad est sint in in in in', magazine), 'false');
+
+// 12/15/22
+// Given an array of numbers, return all pairs that add up to a given sum. The numbers can be used more than once.
+
+// describe("Two Sum", () => {
+//  it("Should implement two sum", () => {
+//   assert.deepEqual(twoSum([1, 2, 2, 3, 4], 4), [[2, 2], [3, 1]]);
+//  });
+// });
+
+function twoSum(arr, sum) {
+    const pairs = [];
+    const nums = {};
+
+    for (const num1 of arr) {
+        const num2 = sum - num1;
+        if (nums[num2]) {
+            pairs.push([num1, num2])
+        } else {
+            nums[num1] = 1
+        }
+    }
+
+    return pairs;
+}
+
+console.log(twoSum([1, 2, 2, 3, 4], 4), [[2, 2], [3, 1]]);
