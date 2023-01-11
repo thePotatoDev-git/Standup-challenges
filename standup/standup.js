@@ -912,12 +912,30 @@ console.log(fibonacci(4), '3');
 // Output: 3
 // Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
 
-function fib(num) {
-    if (num < 2) {
-        return num;
-    }
+// function fib(num) {
+//     if (num < 2) {
+//         return num;
+//     }
 
-    return fib(num - 1) + fib(num - 2);
+//     return fib(num - 1) + fib(num - 2);
+// }
+
+// console.log(fib(2))
+
+// 1/10/23
+// Fibonacci memoized
+
+const memo = {}
+function fib(n) {
+    if(n <= 1){
+        return n
+    }else if( memo[n] ){
+        return memo[n]
+    }else{
+        let result = fib(n - 1) + fib(n - 2)
+        memo[n] = result
+        return result
+    }
 }
 
-console.log(fib(2))
+console.log(fib(5))
