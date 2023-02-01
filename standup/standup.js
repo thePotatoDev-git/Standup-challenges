@@ -979,3 +979,17 @@ function mygcd(x, y) {
         }
     }
 }
+
+// 2/1/23
+// Find the greatest common divisor using recursion
+
+// Test.assertEquals(mygcd(30,12),6)
+// Test.assertEquals(mygcd(8,9),1)
+// Test.assertEquals(mygcd(1,1),1)
+
+function mygcdr(a, b) {
+    if (b === 0) {
+        return a;
+    }
+    return mygcdr(b, a % b)
+}
