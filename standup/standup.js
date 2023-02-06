@@ -1018,23 +1018,47 @@ function mygcdr(a, b) {
 
 // As long as the tests pass, go for it!
 
-class Queue {
+// class Queue {
+//     constructor() {
+//       this.list = []
+//     }
+//   }
+  
+//   Queue.prototype.enqueue = function(item) {
+//     // add item to the queue
+//     this.list.push(item)
+//   };
+  
+//   Queue.prototype.dequeue = function() {
+//     // remove item from the front of the queue and return its value
+//     return this.list.shift()
+//   };
+  
+//   Queue.prototype.size = function() {
+//     // return number of items in queue so far
+//     return this.list.length
+//   };
+
+//   2/6/23
+
+//   Queues and stacks challenge refactored
+
+class Queue2 {
     constructor() {
-      this.list = []
+      this.storage = {};
+      this.head = 0;
+      this.tail = 0;
+    }
+    enqueue(element) {
+        this.storage[this.tail] = element;
+        this.tail++;
+    }
+    dequeue() {
+        let removed = this.storage[this.head];
+        delete this.storage[this.head];
+        this.head++;
+        return removed;
     }
   }
   
-  Queue.prototype.enqueue = function(item) {
-    // add item to the queue
-    this.list.push(item)
-  };
-  
-  Queue.prototype.dequeue = function() {
-    // remove item from the front of the queue and return its value
-    return this.list.shift()
-  };
-  
-  Queue.prototype.size = function() {
-    // return number of items in queue so far
-    return this.list.length
-  };
+const queue = new Queue2();
